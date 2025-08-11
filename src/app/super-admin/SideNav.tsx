@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import {
-  IconCamper,
+  IconCertificate,
   IconChevronDown,
   IconChevronRight,
   IconMenu,
@@ -38,11 +38,9 @@ const SideNav = ({ children }: { children: React.ReactNode }) => {
                   <span className="text-sm">
                     <IconChevronRight />
                   </span>
-                  <Link href={`/${pathSegments.slice(0, index + 1).join("/")}`}>
-                    <span className="text-base capitalize hover:text-primary transition">
-                      {segment.replace(/-/g, " ")}
-                    </span>
-                  </Link>
+                  <span className="text-base capitalize hover:text-primary transition">
+                    {segment.replace(/-/g, " ")}
+                  </span>
                 </React.Fragment>
               ))}
             </div>
@@ -59,10 +57,10 @@ const SideNav = ({ children }: { children: React.ReactNode }) => {
             <div className="flex-1 justify-between lg:hidden px-2">
               <h1 className="text-xl font-bold flex items-center">
                 <span className="h-7 w-7 ">
-                  <IconCamper size={28} className="text-base-content" />
+                  <IconCertificate size={28} className="text-base-content" />
                 </span>
-                <span className="text-primary">Travel</span>
-                <span className="text-secondary">Finder</span>
+                <span className="text-primary">Certi</span>
+                <span className="text-secondary">Track</span>
               </h1>
               <ThemeToggler />
             </div>
@@ -131,16 +129,16 @@ const SideNav = ({ children }: { children: React.ReactNode }) => {
           ></label>
           <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             <Link
-              href="/admin/dashboard"
+              href="/super-admin/dashboard"
               className="flex h-16 w-full flex-row items-center justify-center space-x-3 border-b border-base-content md:justify-start md:px-6"
             >
               <span className="h-7 w-7 rounded-lg bg-base-200">
-                <IconCamper size={28} className="text-base-content" />
+                <IconCertificate size={28} className="text-base-content" />
               </span>
               <span className="text-xl font-bold text-base-content">
                 <h1 className="text-xl font-bold">
-                  <span className="text-primary">Travel</span>
-                  <span className="text-secondary">Finder</span>
+                  <span className="text-primary">Certi</span>
+                  <span className="text-secondary">Track</span>
                 </h1>
               </span>
             </Link>

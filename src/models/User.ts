@@ -8,10 +8,12 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   phone: {
     type: String,
     required: true,
+    unique: true,
   },
   profileImage: {
     type: String,

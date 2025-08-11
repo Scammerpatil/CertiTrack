@@ -20,7 +20,6 @@ const AdminSchema = new Schema({
   state: {
     type: String,
     required: true,
-    unique: true,
   },
   role: {
     type: String,

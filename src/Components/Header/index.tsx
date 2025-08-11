@@ -17,8 +17,8 @@ const Header = () => {
                 </span>
                 <span className="text-accent font-semibold text-xl">Track</span>
               </div>
-              <hr className="w-full border border-base-content" />
-              <span className="text-sm text-base-content/70 italic">
+              <hr className="w-full border border-base-content hidden lg:block" />
+              <span className="text-sm text-base-content/70 italic hidden lg:block">
                 Real-Time Certificate Issuance & Monitoring System
               </span>
             </div>

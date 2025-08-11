@@ -30,6 +30,10 @@ const SubDivisionalOfficerSchema = new Schema({
     required: true,
     default: "sub-divisional-officer",
   },
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
   password: {
     type: String,
     required: true,

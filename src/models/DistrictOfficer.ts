@@ -27,6 +27,10 @@ const DistrictOfficerSchema = new Schema({
     required: true,
     default: "district-officer",
   },
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
   password: {
     type: String,
     required: true,

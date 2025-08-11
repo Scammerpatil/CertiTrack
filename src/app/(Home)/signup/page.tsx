@@ -83,12 +83,12 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center w-full bg-base-200 px-5 py-5 h-[calc(100vh-5rem)]">
+    <div className="flex justify-center items-center w-full bg-base-200 px-5 py-5 min-h-[calc(100vh-5.7rem)]">
       <div className="xl:max-w-7xl bg-base-100 drop-shadow-xl border border-base-content/20 w-full rounded-md flex justify-between items-stretch px-5 xl:px-5 py-5">
         <div className="sm:w-[60%] lg:w-[50%] bg-cover bg-center items-center justify-center hidden md:flex ">
           <img src="login.png" alt="login" className="h-[500px]" />
         </div>
-        <div className="h-full md:w-1/2 my-auto">
+        <div className="h-full md:w-1/2 my-auto mx-auto">
           <h1 className="text-center text-2xl sm:text-3xl font-semibold text-primary">
             Create Account
           </h1>
@@ -222,7 +222,7 @@ const SignUp = () => {
                 </span>
               </div>
               <div className="flex items-center gap-1.5  justify-start pl-2">
-                <div className="form-control">
+                <div className="form-control flex items-center">
                   <label className="label cursor-pointer">
                     <input
                       type="checkbox"

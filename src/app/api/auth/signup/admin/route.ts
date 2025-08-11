@@ -15,12 +15,14 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    // Admin will be only one for each state
+    // Check if an admin already exists for the state "Maharashtra"
     const admin = await Admin.findOne({
       state: "Maharashtra",
     });
-    if (admin) {
+    if (admin && admin.isApproved!) {
       return NextResponse.json(
-        { message: "Admin already exists for this District" },
+        { message: "Admin already exists for Maharashtra" },
         { status: 400 }
       );
     }

@@ -30,6 +30,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <IconBuildingBank width="24" height="24" />,
   },
   {
+    title: "Manage Certificate Officers",
+    path: "/super-admin/manage-certificate-officers",
+    icon: <IconBuildingBank width="24" height="24" />,
+  },
+  {
     title: "Monitor Applications",
     path: "/super-admin/monitor-applications",
     icon: <IconChecklist width="24" height="24" />,

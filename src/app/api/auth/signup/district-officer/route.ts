@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       email: formData.email,
       district: formData.district,
     });
-    if (exisitingDO) {
+    if (exisitingDO && exisitingDO.isApproved) {
       return NextResponse.json(
         { message: "District Officer already exists" },
         { status: 400 }

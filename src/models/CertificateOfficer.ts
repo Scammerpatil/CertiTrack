@@ -30,6 +30,10 @@ const CertificateOfficerSchema = new Schema({
     required: true,
     default: "certificate-officer",
   },
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
   password: {
     type: String,
     required: true,
