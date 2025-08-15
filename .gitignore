@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+public/affidavit
+public/birthCertificates
+public/incomeCertificate
+public/nonCreamyLayerCertificate
+public/domicileCertificate
+
+python/__pycache__/

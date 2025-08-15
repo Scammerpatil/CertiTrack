@@ -1,4 +1,3 @@
-import Admin from "@/models/Admin";
 import DistrictOfficer from "@/models/DistrictOfficer";
 import { NextRequest, NextResponse } from "next/server";
 

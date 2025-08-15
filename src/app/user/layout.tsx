@@ -5,6 +5,7 @@ import { UserProvider, useUser } from "@/context/UserContext";
 import SideNav from "./SideNav";
 import { useEffect } from "react";
 import axios from "axios";
+import Script from "next/script";
 
 const Component = ({ children }: { children: React.ReactNode }) => {
   const { setUser } = useUser();
@@ -25,6 +26,10 @@ const Component = ({ children }: { children: React.ReactNode }) => {
         </title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <Script
+          id="razorpay-checkout-js"
+          src="https://checkout.razorpay.com/v1/checkout.js"
+        />
         <meta
           name="description"
           content="CertiTrack is a real-time certificate issuance monitoring system designed for governments & local authorities to track, allocate, and optimize resources for document processing. Reduce backlogs, improve efficiency, and streamline certificate approvals."

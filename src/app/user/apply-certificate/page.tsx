@@ -14,6 +14,7 @@ type Certificate = {
   name: string;
   description: string;
   docs: CertificateDocs;
+  applicationFee?: number;
 };
 
 const certificates: Certificate[] = [
@@ -39,6 +40,7 @@ const certificates: Certificate[] = [
       ],
       mandatoryDocument: ["Self Declaration"],
     },
+    applicationFee: 50,
   },
   {
     name: "Non-Creamy Layer Certificate",
@@ -73,6 +75,7 @@ const certificates: Certificate[] = [
         "Proof of caste for self",
       ],
     },
+    applicationFee: 60,
   },
   {
     name: "Birth Certificate",
@@ -91,6 +94,7 @@ const certificates: Certificate[] = [
       ],
       mandatoryDocument: ["Self Declaration"],
     },
+    applicationFee: 30,
   },
   {
     name: "Income Certificate",
@@ -101,6 +105,7 @@ const certificates: Certificate[] = [
       otherDocs: ["Income Proof (Form 16 / Income Proof by Gram Panchayat)"],
       mandatoryDocument: ["Self Declaration"],
     },
+    applicationFee: 70,
   },
   {
     name: "Domicile Certificate",
@@ -116,6 +121,7 @@ const certificates: Certificate[] = [
       ],
       mandatoryDocument: ["Self Declaration"],
     },
+    applicationFee: 40,
   },
 ];
 
@@ -171,7 +177,9 @@ export default function ApplyCertificate() {
           <h3 className="font-bold text-2xl mb-6 bg-primary text-primary-content p-4">
             Certificate Name : {selected?.name}
           </h3>
-
+          <p className="text-base-content/70 mb-4 text-2xl font-extrabold">
+            Application Fee: {selected?.applicationFee} ₹
+          </p>
           <h4 className="font-semibold mb-2 flex items-center gap-2 bg-accent text-accent-content p-3">
             <IconFile size={24} /> Required Documents:
           </h4>

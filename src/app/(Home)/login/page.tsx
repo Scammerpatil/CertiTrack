@@ -72,8 +72,8 @@ const SignUp = () => {
                 <option value="super-admin">Super Admin</option>
                 <option value="admin">Admin</option>
                 <option value="district-officer">District Officer (DO)</option>
-                <option value="sub-division-officer">
-                  Sub-Division Officer (SDO)
+                <option value="sub-divisional-officer">
+                  Sub-Divisional Officer (SDO)
                 </option>
                 <option value="certificate-officer">Certificate Officer</option>
                 <option value="user">User</option>

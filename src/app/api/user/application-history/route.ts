@@ -39,6 +39,11 @@ export async function GET(req: NextRequest) {
       ...nonCreamyLayer,
       ...incomeCertificates
     );
+
+    applications.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
     return NextResponse.json({ applications });
   } catch (error) {
     console.log("An Error Occured:", error);

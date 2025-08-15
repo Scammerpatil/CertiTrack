@@ -59,7 +59,6 @@ const AffidavitSchema = new Schema(
         "Pending at CO",
         "Verified by CO",
         "Approved by SDO",
-        "Approved by DO",
         "Certificate Issued",
         "Rejected By CO",
         "Rejected By SDO",

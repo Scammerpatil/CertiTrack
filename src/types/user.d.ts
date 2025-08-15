@@ -8,4 +8,5 @@ export interface User {
   taluka: string;
   district: string;
   profileImage: string;
+  role: string;
 }

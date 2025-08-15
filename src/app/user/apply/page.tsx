@@ -2,6 +2,11 @@
 import { useUser } from "@/context/UserContext";
 import { useSearchParams } from "next/navigation";
 import Affidavit from "./component/Affidavit";
+import BirthCertificate from "./component/DomicileCertificate";
+import DomicileCertificate from "./component/DomicileCertificate";
+import IncomeCertificate from "./component/IncomeCertificate";
+import NonCreamyLayerCertificate from "./component/NonCreamyLayer";
+import Payment from "@/Components/Payment/Payment";
 
 export default function ApplyPage() {
   const searchParams = useSearchParams();
@@ -23,6 +28,12 @@ export default function ApplyPage() {
         "
       </h1>
       {certificate === "affidavit" && <Affidavit />}
+      {certificate === "birth_certificate" && <BirthCertificate />}
+      {certificate === "domicile_certificate" && <DomicileCertificate />}
+      {certificate === "income_certificate" && <IncomeCertificate />}
+      {certificate === "non-creamy_layer_certificate" && (
+        <NonCreamyLayerCertificate />
+      )}
     </>
   );
 }

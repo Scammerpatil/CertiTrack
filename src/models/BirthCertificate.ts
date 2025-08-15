@@ -7,6 +7,11 @@ const BirthCertificateSchema = new Schema(
       ref: "User",
       required: true,
     },
+    generalInfo: {
+      fullName: String,
+      district: String,
+      taluka: String,
+    },
     type: {
       type: String,
       default: "Birth Certificate",
@@ -14,24 +19,63 @@ const BirthCertificateSchema = new Schema(
     childName: String,
     dob: Date,
     placeOfBirth: String,
+    gender: String,
+    address: String,
+    permanentAddress: String,
     parents: {
       father: String,
       mother: String,
-      grandparents: [String],
     },
     hospitalDetails: {
       name: String,
       address: String,
       contactNumber: String,
     },
-    parentIdentityProof: String,
-    marriageCertificate: String,
-    mandatoryDocs: [
-      {
-        name: String,
-        fileUrl: String,
+    parentIdentityProof: {
+      type: {
+        type: String,
+        enum: [
+          "Passport",
+          "Aadhaar",
+          "Ration Card",
+          "Voter ID",
+          "Driving License",
+          "Electricity Bill",
+        ],
       },
-    ],
+      fileUrl: String,
+    },
+    marriageCertificate: {
+      type: {
+        type: String,
+        enum: [
+          "Marriage Certificate",
+          "Court Marriage Certificate",
+          "Religious Marriage Certificate",
+        ],
+      },
+      fileUrl: String,
+    },
+    proofOfAddress: {
+      type: {
+        type: String,
+        enum: [
+          "Passport",
+          "Aadhaar",
+          "Ration Card",
+          "Voter ID",
+          "Driving License",
+          "Electricity Bill",
+        ],
+      },
+      fileUrl: String,
+    },
+    selfDeclaration: {
+      type: {
+        type: String,
+      },
+      fileUrl: String,
+    },
     status: {
       type: String,
       enum: [

@@ -10,7 +10,7 @@ import {
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
-    title: "Super Admin Dashboard",
+    title: "Dashboard",
     path: "/super-admin/dashboard",
     icon: <IconUserShield width="24" height="24" />,
   },
@@ -35,18 +35,8 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <IconBuildingBank width="24" height="24" />,
   },
   {
-    title: "Monitor Applications",
-    path: "/super-admin/monitor-applications",
-    icon: <IconChecklist width="24" height="24" />,
-  },
-  {
     title: "State-wide Analytics",
     path: "/super-admin/state-analytics",
     icon: <IconMap width="24" height="24" />,
-  },
-  {
-    title: "System Settings",
-    path: "/super-admin/settings",
-    icon: <IconSettings width="24" height="24" />,
   },
 ];

@@ -9,7 +9,7 @@ import {
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
-    title: "User Dashboard",
+    title: "Dashboard",
     path: "/user/dashboard",
     icon: <IconLayoutDashboard width="24" height="24" />,
   },

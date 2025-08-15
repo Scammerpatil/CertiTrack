@@ -16,9 +16,9 @@ const ROLE_CONFIG = {
     model: DistrictOfficer,
     route: "/district-officer/dashboard",
   },
-  "sub-division-officer": {
+  "sub-divisional-officer": {
     model: SubDivisionalOfficer,
-    route: "/sub-division-officer/dashboard",
+    route: "/sub-divisional-officer/dashboard",
   },
   "certificate-officer": {
     model: CertificateOfficer,
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   const { formData } = await req.json();
   const { email, password, role } = formData || {};
   type RoleKey = keyof typeof ROLE_CONFIG;
-
+  console.log(email, role);
   if (!email || !password) {
     return NextResponse.json(
       { message: "Please fill all the fields" },

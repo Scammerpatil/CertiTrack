@@ -32,15 +32,35 @@ const DomicileCertificateSchema = new Schema(
       },
       fileUrl: String,
     },
-    residencyProof: String,
-    proofByTalathi: String,
-    proofByGramPanchayat: String,
-    mandatoryDocs: [
-      {
-        name: String,
-        fileUrl: String,
+    ageProof: {
+      type: {
+        type: String,
+        enum: [
+          "Birth Certificate",
+          "School Leaving Certificate",
+          "Aadhaar",
+          "Passport",
+        ],
       },
-    ],
+      fileUrl: String,
+    },
+    residencyProof: {
+      type: {
+        type: String,
+        enum: [
+          "Residence Proof by Talathi",
+          "Residence Proof by Gram Sevak",
+          "Residence Proof by Bill Collector",
+        ],
+      },
+      fileUrl: String,
+    },
+    selfDeclaration: {
+      type: {
+        type: String,
+      },
+      fileUrl: String,
+    },
     status: {
       type: String,
       enum: [

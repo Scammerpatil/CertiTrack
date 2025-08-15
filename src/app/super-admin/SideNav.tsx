@@ -14,13 +14,20 @@ import {
   IconMenu,
 } from "@tabler/icons-react";
 import { useUser } from "@/context/UserContext";
+import toast from "react-hot-toast";
 
 const SideNav = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const { user } = useUser();
   const handleLogout = async () => {
-    await axios.get("/api/auth/logout");
-    router.push("/");
+    toast.promise(axios.get("/api/auth/logout"), {
+      loading: "Logging out...",
+      success: () => {
+        router.push("/");
+        return "Logged out successfully";
+      },
+      error: "Error logging out",
+    });
   };
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
@@ -54,15 +61,57 @@ const SideNav = ({ children }: { children: React.ReactNode }) => {
               </label>
             </div>
 
-            <div className="flex-1 justify-between lg:hidden px-2">
-              <h1 className="text-xl font-bold flex items-center">
+            <div className="navbar lg:hidden px-2">
+              <Link
+                href={`/${user.role}/dashboard`}
+                className="navbar-start text-xl font-bold flex items-center"
+              >
                 <span className="h-7 w-7 ">
                   <IconCertificate size={28} className="text-base-content" />
                 </span>
                 <span className="text-primary">Certi</span>
                 <span className="text-secondary">Track</span>
-              </h1>
-              <ThemeToggler />
+              </Link>
+              <div className="navbar-end space-x-4">
+                <ThemeToggler />
+                <div className="dropdown dropdown-left cursor-pointer bg-transparent">
+                  <Image
+                    src={user.profileImage!}
+                    alt="Avatar"
+                    className="rounded-full"
+                    width={40}
+                    height={40}
+                    tabIndex={0}
+                    role="button"
+                  />
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-base-100 rounded-box z-[1] w-72 p-2 shadow"
+                  >
+                    {/* User Initial */}
+                    <div className="flex items-center justify-center mb-2">
+                      <div className="flex items-center justify-center w-12 h-12 bg-primary text-base-conten rounded-full text-xl font-bold">
+                        {user.name[0].toUpperCase()}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-center">
+                      <span className="text-lg font-semibold text-base-content">
+                        {user.name}
+                      </span>
+                    </div>
+                    <hr className="my-2 border-base-content" />
+                    <div className="flex flex-col">
+                      <button
+                        onClick={handleLogout}
+                        className="text-left px-4 py-2 text-base-content text-dark hover:bg-base-200 transition duration-200"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div className="hidden lg:block">
@@ -96,12 +145,6 @@ const SideNav = ({ children }: { children: React.ReactNode }) => {
                     </div>
                     <hr className="my-2 border-base-content" />
                     <div className="flex flex-col">
-                      <Link
-                        className="text-left px-4 py-2 text-base-content hover:bg-base-200 transition duration-200"
-                        href={`/user/my-account`}
-                      >
-                        My Account
-                      </Link>
                       <button
                         onClick={handleLogout}
                         className="text-left px-4 py-2 text-base-content text-dark hover:bg-base-200 transition duration-200"
@@ -129,7 +172,7 @@ const SideNav = ({ children }: { children: React.ReactNode }) => {
           ></label>
           <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             <Link
-              href="/super-admin/dashboard"
+              href={`/${user.role}/dashboard`}
               className="flex h-16 w-full flex-row items-center justify-center space-x-3 border-b border-base-content md:justify-start md:px-6"
             >
               <span className="h-7 w-7 rounded-lg bg-base-200">

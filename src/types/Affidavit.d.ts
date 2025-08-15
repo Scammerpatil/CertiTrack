@@ -20,7 +20,7 @@ export interface Affidavit {
     fileUrl: string;
   }[];
   status: string;
-  remarksByCO: string;
-  remarksBySDO: string;
-  remarksByDO: string;
+  remarkByCO: string;
+  remarkBySDO: string;
+  remarkByDO: string;
 }

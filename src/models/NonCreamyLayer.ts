@@ -46,16 +46,24 @@ const NonCreamyLayerSchema = new Schema(
       },
       fileUrl: String,
     },
-    casteProofRelative: String,
-    incomeProof: String,
-    affidavitForCaste: String,
-    casteProofSelf: String,
-    mandatoryDocs: [
-      {
-        name: String,
-        fileUrl: String,
+    incomeProof: {
+      type: {
+        type: String,
       },
-    ],
+      fileUrl: String,
+    },
+    casteProof: {
+      type: {
+        type: String,
+      },
+      fileUrl: String,
+    },
+    selfDeclaration: {
+      type: {
+        type: String,
+      },
+      fileUrl: String,
+    },
     status: {
       type: String,
       enum: [

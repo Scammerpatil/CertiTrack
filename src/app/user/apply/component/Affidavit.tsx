@@ -1,3 +1,4 @@
+import Payment from "@/Components/Payment/Payment";
 import { useUser } from "@/context/UserContext";
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
@@ -80,7 +81,7 @@ const Affidavit = () => {
           setAffidavit({
             ...affidavit,
             [path]: {
-              type: affidavit[path].type,
+              type: (affidavit as any)[path].type,
               fileUrl: data.data.path,
             },
           });
@@ -94,7 +95,55 @@ const Affidavit = () => {
     }
   };
 
-  const HandleApplyAffidavit = () => {
+  const handlePayment = async () => {
+    if (
+      !proofOfIdentity ||
+      !proofOfAddress ||
+      !selfDeclaration ||
+      !affidavit.generalInfo.address ||
+      !affidavit.generalInfo.dob
+    ) {
+      toast.error("Please fill all required fields and upload documents.");
+      return;
+    }
+    if (!confirm("Do you want to proceed with the payment?")) return;
+    const amount = 50;
+    toast.loading("Processing payment....");
+    try {
+      const paymentRes = await axios.post("/api/payment", {
+        amount: amount,
+      });
+      toast.dismiss();
+      const options = {
+        key: "rzp_test_cXJvckaWoN0JQx",
+        amount: paymentRes.data.amount || amount * 100,
+        currency: "INR",
+        name: "CertiTrack",
+        description: "Certificate Payment",
+        order_id: paymentRes.data.orderId,
+        handler: () => {
+          toast.success("Payment Successful!");
+          handleApplyAffidavit();
+        },
+        prefill: {
+          name: user?.name,
+          email: user?.email,
+          contact: user?.phone,
+        },
+      };
+      const rzp = new (window as any).Razorpay(options);
+      rzp.on("payment.failed", function (response: any) {
+        toast.error(response.error.description);
+      });
+      rzp.open();
+    } catch (error: any) {
+      console.log(error);
+      toast.dismiss();
+      toast.error(error?.response?.data.message || "Payment failed");
+    }
+  };
+
+  const handleApplyAffidavit = () => {
     if (
       affidavit.proofOfIdentity.fileUrl &&
       affidavit.proofOfAddress.fileUrl &&
@@ -108,6 +157,31 @@ const Affidavit = () => {
       toast.promise(response, {
         loading: "Applying for affidavit...",
         success: (data) => {
+          setAffidavit({
+            applicantId: "",
+            generalInfo: {
+              fullName: "",
+              dob: "",
+              address: "",
+              district: "",
+              taluka: "",
+            },
+            proofOfIdentity: {
+              type: "",
+              fileUrl: "",
+            },
+            proofOfAddress: {
+              type: "",
+              fileUrl: "",
+            },
+            selfDeclaration: {
+              type: "",
+              fileUrl: "",
+            },
+          });
+          setProofOfAddress(null);
+          setSelfDeclaration(null);
+          setProofOfIdentity(null);
           return "Affidavit applied successfully!";
         },
         error: (err) => {
@@ -425,10 +499,7 @@ const Affidavit = () => {
             </div>
           </div>
         </div>
-        <button
-          className="btn btn-accent w-full mt-4"
-          onClick={HandleApplyAffidavit}
-        >
+        <button className="btn btn-accent w-full mt-4" onClick={handlePayment}>
           Apply
         </button>
       </div>

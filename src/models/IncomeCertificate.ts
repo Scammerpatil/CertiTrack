@@ -14,10 +14,17 @@ const IncomeCertificateSchema = new Schema(
       district: String,
       taluka: String,
     },
+    reason: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       default: "Income Certificate",
     },
+    tMinus2Income: Number,
+    tMinus1Income: Number,
+    currentIncome: Number,
     proofOfIdentity: {
       type: {
         type: String,
@@ -32,17 +39,39 @@ const IncomeCertificateSchema = new Schema(
       },
       fileUrl: String,
     },
-    incomeProof: String,
-    incomeProofAuthority: {
-      type: String,
-      enum: ["Gram Panchayat", "Other"],
-    },
-    mandatoryDocs: [
-      {
-        name: String,
-        fileUrl: String,
+    proofOfAddress: {
+      type: {
+        type: String,
+        enum: [
+          "Passport",
+          "Aadhaar",
+          "Ration Card",
+          "Voter ID",
+          "Driving License",
+          "Electricity Bill",
+        ],
       },
-    ],
+      fileUrl: String,
+    },
+    incomeProof: {
+      type: {
+        type: String,
+        enum: [
+          "Income tax statement letter",
+          "Circle Officer Verification report",
+          "If Recieved Salary Provide Form no16",
+          "Retirement/Salary holders Bank Certificate",
+          "If applicant is owner of the land then 7/12 to yield 8-A Talathi report",
+        ],
+      },
+      fileUrl: String,
+    },
+    selfDeclaration: {
+      type: {
+        type: String,
+      },
+      fileUrl: String,
+    },
     status: {
       type: String,
       enum: [
